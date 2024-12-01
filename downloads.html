@@ -1,79 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Downloads - Your Website</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
-	<title>Downloads</title>
-	<style>
-        body {
-        	font-family: Arial, sans-serif;
-        	margin: 0;
-		padding: 0;
-		background-color: #f4f4f4;
-	     }
-        header {
-        	background-color: #333;
-        	color: white;
-        	text-align: center;
-        	padding: 10px 0;
-        }
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav button {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        nav button:hover {
-            background-color: #555;
-        }
-        section {
-            padding: 20px;
-            text-align: center;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
 </head>
 <body>
-
+    <!-- Header Section -->
     <header>
-        <h1>Downloads</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <button onclick="location.href='index.html'">Home</button>
-        <button onclick="location.href='about.html'">About</button>
-	<button onclick="location.href='downloads.html'">Downloads</button>
-        <button onclick="location.href='contact.html'">Contact</button>
-    </nav>
-
-    <section>
-        <h2>Download Section</h2>
-        <p>Click the links below to download files:</p>
+    <!-- Main Section -->
+    <main>
+        <section>
+            <h1>Downloads</h1>
         <a href="file1.zip" download>Download File 1</a><br>
         <a href="file2.zip" download>Download File 2</a>
-    </section>
+        </section>
+    </main>
 
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
     </footer>
-
 </body>
 </html>
-

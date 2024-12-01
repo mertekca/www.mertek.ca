@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="/files/styles.css"> <!-- Link to external CSS -->
 	<script type="text/javascript">
   if (window.location.pathname === "/home/index.html") {
-    window.location.href = "/home";
+    setTimeout(function() {
+      window.location.href = "/home";
+    }, 100); // Delay the redirect by 100 milliseconds
   }
 </script>
+
 </head>
 <body>
     <!-- Header Section -->

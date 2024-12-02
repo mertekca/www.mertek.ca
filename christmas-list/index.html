@@ -16,9 +16,23 @@
     }
   </style>
       <style>
+    body {
+      display: flex;
+      justify-content: center; /* Centers content horizontally */
+      padding: 20px;
+    }
+
     ul {
-      font-size: 30px; /* Makes the text slightly bigger (adjust as needed) */
-        margin-left: -200px;
+      font-size: 18px;         /* Slightly bigger text */
+      max-width: 90%;          /* Ensures it doesn't go too wide on smaller screens */
+      margin-left: -200px;     /* Moves the list 200px to the left */
+    }
+</style>
+    /* Media query for smaller devices (width 600px and below) */
+    @media (max-width: 600px) {
+      ul {
+        margin-left: 0;        /* Removes the negative margin on small screens */
+      }
     }
   </style>
    <script type="text/javascript">

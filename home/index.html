@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript">
+  // Define the allowed paths (adjust according to your actual pages)
+  const allowedPaths = ["/home","/about","/contact-us","/downloads"];
+
+  // Get the current path of the URL
+  const currentPath = window.location.pathname;
+
+  // If the current path is not in the allowed list, redirect to the 404 page
+  if (!allowedPaths.includes(currentPath)) {
+    window.location.href = "/404.html";  // Replace with your 404 page location
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

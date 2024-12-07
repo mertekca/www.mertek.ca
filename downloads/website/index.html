@@ -8,7 +8,9 @@
 	<link rel="icon" href="/files/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/files/styles.css"> <!-- Link to external CSS -->
 	  <script type="text/javascript">
-  window.location.pathname = "./website/"
+    if (window.location.pathname === "/downloads/website/index.html") {
+      window.location.href = "/downloads/website";
+    }
   </script>
 </head>
 <body>

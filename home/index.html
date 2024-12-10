@@ -14,7 +14,7 @@
       window.location.href = "/home";
     }
   </script>
-	 <style>
+	<style>
     /* Styles for the ad-blocker popup */
     #adblock-popup {
       display: none; /* Hidden by default */
@@ -51,35 +51,36 @@
     }
   </style>
 </head>
-	 <div id="ad-test" class="ad-banner" style="display:none;"></div>
-
-  <!-- Ad-blocker popup -->
+	<body>
+		<!-- Ad-blocker popup -->
   <div id="adblock-popup">
     <h2>Please disable your ad-blocker</h2>
     <p>We rely on ads to keep this site running. Please consider disabling your ad-blocker to support us.</p>
-    <button onclick="closePopup()">Close</button>
+    <button onclick="reloadPage()">Reload</button>
   </div>
 
   <script>
     // Function to detect if ad blocker is active
     function detectAdBlocker() {
-      var adTest = document.getElementById('ad-test');
-      
-      // If the adTest element is hidden or removed, show the popup
-      if (adTest.offsetHeight === 0) {
+      // Attempt to load an ad script (which will be blocked by most ad blockers)
+      var adScript = document.createElement('script');
+      adScript.src = '/ads.js'; // This URL mimics an ad script URL pattern
+      adScript.onerror = function() {
+        // If the script fails to load, ad blocker is likely enabled
         document.getElementById('adblock-popup').style.display = 'block';
-      }
+      };
+
+      document.body.appendChild(adScript);
     }
 
-    // Function to close the popup
-    function closePopup() {
-      document.getElementById('adblock-popup').style.display = 'none';
+    // Function to reload the page
+    function reloadPage() {
+      location.reload(); // Reloads the page
     }
 
     // Run the adblock detection function when the page loads
     window.onload = detectAdBlocker;
   </script>
-<body>
     <!-- Header Section -->
     <header>
         <nav>

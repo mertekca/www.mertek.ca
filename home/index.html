@@ -14,7 +14,7 @@
       window.location.href = "/home";
     }
   </script>
-	<style>
+	 <style>
     /* Styles for the ad-blocker popup */
     #adblock-popup {
       display: none; /* Hidden by default */
@@ -49,6 +49,16 @@
       border: none;
       cursor: pointer;
     }
+
+    /* The "bait" element to be blocked by ad-blockers */
+    #ad-container {
+      display: block;
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      left: -9999px;
+      visibility: hidden;
+    }
   </style>
 </head>
 	<body>
@@ -58,17 +68,31 @@
     <p>We rely on ads to keep this site running. Please disable your ad-blocker to support us.<br/>Disable your ad-blocker and reload the page.</p>
     <button onclick="reloadPage()">Reload</button>
   </div>
+ <!-- Hidden "bait" element for ad-blocker detection -->
+  <div id="ad-container" class="ad-banner"></div>
 
-   <script>
-    // Function to detect ad-blocker by checking the visibility of the "ad-container" element
+  <script>
     function detectAdBlocker() {
       var adElement = document.getElementById('ad-container');
       var isAdBlocked = window.getComputedStyle(adElement).display === 'none';
 
-      // If the element is hidden, the ad blocker is likely active
+      // First check if bait element is hidden (common sign of ad-blocking)
       if (isAdBlocked) {
-        document.getElementById('adblock-popup').style.display = 'block';
+        showAdblockPopup();
+        return;
       }
+
+      // Second check by trying to load a fake ad script to trigger the onerror event
+      var adTest = document.createElement('script');
+      adTest.src = 'https://fakeadserver.com/ad.js'; // A fake ad-related URL
+      adTest.onerror = function() {
+        showAdblockPopup(); // Show popup if script fails to load
+      };
+      document.body.appendChild(adTest);
+    }
+
+    function showAdblockPopup() {
+      document.getElementById('adblock-popup').style.display = 'block';
     }
 
     // Function to reload the page
@@ -79,7 +103,6 @@
     // Run the adblock detection function when the page loads
     window.onload = detectAdBlocker;
   </script>
-
     <!-- Header Section -->
     <header>
         <nav>

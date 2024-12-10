@@ -14,7 +14,71 @@
       window.location.href = "/home";
     }
   </script>
+	 <style>
+    /* Styles for the ad-blocker popup */
+    #adblock-popup {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding-top: 150px;
+      font-family: Arial, sans-serif;
+      z-index: 9999;
+    }
+
+    #adblock-popup h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    #adblock-popup p {
+      font-size: 18px;
+    }
+
+    #adblock-popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
+	 <div id="ad-test" class="ad-banner" style="display:none;"></div>
+
+  <!-- Ad-blocker popup -->
+  <div id="adblock-popup">
+    <h2>Please disable your ad-blocker</h2>
+    <p>We rely on ads to keep this site running. Please consider disabling your ad-blocker to support us.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    // Function to detect if ad blocker is active
+    function detectAdBlocker() {
+      var adTest = document.getElementById('ad-test');
+      
+      // If the adTest element is hidden or removed, show the popup
+      if (adTest.offsetHeight === 0) {
+        document.getElementById('adblock-popup').style.display = 'block';
+      }
+    }
+
+    // Function to close the popup
+    function closePopup() {
+      document.getElementById('adblock-popup').style.display = 'none';
+    }
+
+    // Run the adblock detection function when the page loads
+    window.onload = detectAdBlocker;
+  </script>
 <body>
     <!-- Header Section -->
     <header>

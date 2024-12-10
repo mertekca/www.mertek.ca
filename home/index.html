@@ -18,17 +18,12 @@
 	h1 {
     text-align: center;
   }
-  #break-paragraph {
-    text-align: center;
-    word-wrap: break-word;
-    white-space: normal;
-  }
-
-  /* Media query for text to wrap after 600px width */
-  @media (max-width: 300px) {
-    #break-paragraph {
-      white-space: normal;
-    }
+.wrap-text {
+    padding-left: 20px;
+    max-width: 600px;         /* Limit the width to 600px */
+    word-wrap: break-word;    /* Ensure long words break and wrap */
+    white-space: normal;      /* Allow text to wrap naturally */
+    margin: 0 auto;           /* Center the paragraph */
   }
 </style>
 </head>
@@ -49,7 +44,7 @@
     <main>
         <section>
 <h1>Welcome to MerTek!</h1>
-<p id="break-paragraph">
+<p id="wrap-text">
   This is my technological journey where I share my experiences,
   challenges, and growth in the world of technology.
   From learning new coding languages to exploring the latest innovations,

@@ -60,18 +60,16 @@
   </div>
 
  <script>
-    // Function to detect if ad blocker is active
+      // Function to detect if ad blocker is active
     function detectAdBlocker() {
-      var adElement = document.createElement('div');
-      adElement.className = 'ad-banner'; // Common class used for ads
-      adElement.style.display = 'none'; // Hidden element that ad blockers usually target
-      document.body.appendChild(adElement);
-
-      // Check if the ad element was blocked
-      if (getComputedStyle(adElement).display === 'none') {
-        // If blocked, display the ad-block popup
+      var testAd = document.createElement('script');
+      testAd.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'; // A script that ad blockers commonly block
+      testAd.onerror = function() {
+        // If the script is blocked, show the ad-blocker popup
         document.getElementById('adblock-popup').style.display = 'block';
-      }
+      };
+      document.body.appendChild(testAd);
+    }
 
       // Clean up: remove the test element
       document.body.removeChild(adElement);

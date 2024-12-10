@@ -5,10 +5,10 @@
     padding-left: 20px;
     padding-right: 20px;
         width: 100%;             /* Make the container take up full width */
-    max-width: 600px;        /* Set the maximum width to 600px */
+    max-width: 500px;        /* Set the maximum width to 600px */
     word-wrap: break-word;   /* Allow breaking of long words */
     white-space: normal;     /* Allow text to wrap */
-     margin: auto;         /* Adjust the left indentation */        /* Center horizontally */
+     margin: auto;       /* Center horizontally */
   }
 /* General Styles */
 body {

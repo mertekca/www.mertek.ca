@@ -59,16 +59,16 @@
     <button onclick="reloadPage()">Reload</button>
   </div>
 
-  <script>
-    // Function to check for ad-blocker by trying to load an external script
+   <script>
+    // Function to detect ad-blocker by checking the visibility of the "ad-container" element
     function detectAdBlocker() {
-      var adTest = document.createElement('script');
-      adTest.src = 'https://example.com/ad-script.js'; // A fake ad-related URL
-      adTest.onerror = function() {
-        // If the script fails to load, the ad blocker is active
+      var adElement = document.getElementById('ad-container');
+      var isAdBlocked = window.getComputedStyle(adElement).display === 'none';
+
+      // If the element is hidden, the ad blocker is likely active
+      if (isAdBlocked) {
         document.getElementById('adblock-popup').style.display = 'block';
-      };
-      document.body.appendChild(adTest);
+      }
     }
 
     // Function to reload the page

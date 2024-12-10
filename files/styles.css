@@ -3,12 +3,12 @@
   }
 .wrap-text {
     padding-left: 20px;
+    padding-right: 20px;
         width: 100%;             /* Make the container take up full width */
     max-width: 600px;        /* Set the maximum width to 600px */
     word-wrap: break-word;   /* Allow breaking of long words */
     white-space: normal;     /* Allow text to wrap */
-     margin-left: auto;         /* Adjust the left indentation */
-    margin-right: 50px        /* Center horizontally */
+     margin: auto;         /* Adjust the left indentation */        /* Center horizontally */
   }
 /* General Styles */
 body {

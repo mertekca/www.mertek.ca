@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    max-width: 800px;           /* Set the maximum width for the content */
+    max-width: 700px;           /* Set the maximum width for the content */
     margin: 0 auto;
               /* Add padding on the left and right */
     background-color: white;    /* Set white background for the content area */

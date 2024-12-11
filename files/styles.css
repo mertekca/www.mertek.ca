@@ -1,16 +1,18 @@
 html, body {
-    width: 100%;             /* Ensure the body takes up full width */
-    height: 100%;            /* Ensure full height */
-    margin: 0;               /* Remove default margin */
-    padding: 0;              /* Remove default padding */
+    height: 100%;               /* Ensure the body takes full height of the viewport */
+    margin: 0;                  /* Remove default margins */
+    padding: 0;                 /* Remove default padding */
+    background-color: black;    /* Set black background for the sides */
 }
 
-.container {
-    max-width: 800px;        /* Set maximum width for content */
-    margin: 0 auto;          /* Center the container */
-    padding: 0 20px;         /* Add padding on left and right */
-    box-sizing: border-box;  /* Ensure padding is part of width */
-}
+body {
+    max-width: 800px;           /* Set the maximum width for the content */
+    margin: 0 auto;
+              /* Add padding on the left and right */
+    background-color: white;    /* Set white background for the content area */
+    min-height: 100vh;  
+      font-family: 'Arial', sans-serif;
+    box-sizing: border-box;     /* Include padding in the width calculation */
 
 h1 {
     text-align: center;

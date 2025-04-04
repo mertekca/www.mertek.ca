@@ -8,28 +8,21 @@
 <body>
     <h1 id="page-title">Search Results</h1>
 
-    <!-- Google Custom Search Engine Embed -->
-    <script async src="https://cse.google.com/cse.js?cx=11e846c3e49224d11"></script>
-
-    <!-- Search Form -->
-    <form action="/search" method="get" id="searchForm">
-        <input type="text" name="q" id="searchQuery" placeholder="Search..." required>
-        <button type="submit">Search</button>
-    </form>
-
-    <!-- Custom Search Box -->
-    <div class="gcse-searchresults"></div>
+    <!-- Iframe to Display Google Custom Search -->
+    <iframe id="google-search-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
 
     <script>
-        // Get query parameter from URL
         window.onload = function() {
             const query = new URLSearchParams(window.location.search).get('q');
             if (query) {
-                document.getElementById('searchQuery').value = query;
+                // Build the CSE URL with the query
+                const cseUrl = `https://cse.google.com/cse?cx=11e846c3e49224d11#gsc.tab=0&gsc.sort=&gsc.q=${encodeURIComponent(query)}`;
+
+                // Set the iframe's src attribute to the CSE URL with the query
+                document.getElementById('google-search-iframe').src = cseUrl;
+
+                // Update the title to show the search query
                 document.getElementById('page-title').innerText = "Search Results - " + decodeURIComponent(query);
-                // Trigger the search automatically using the query
-                var searchBox = document.querySelector('.gcse-searchresults');
-                searchBox.innerHTML = `<gcse:searchresults query="${decodeURIComponent(query)}"></gcse:searchresults>`;
             }
         };
     </script>

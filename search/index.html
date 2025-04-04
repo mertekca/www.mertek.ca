@@ -4,26 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <!-- Include the CSE Script -->
-    <script async src="https://cse.google.com/cse.js?cx=11e846c3e49224d11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .result {
+            margin-bottom: 20px;
+        }
+        .result a {
+            font-size: 18px;
+            color: blue;
+            text-decoration: none;
+        }
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <h1 id="page-title">Search Results</h1>
 
-    <!-- Google Custom Search Box -->
-    <div class="gcse-searchresults"></div>
+    <div id="results"></div>
 
     <script>
         window.onload = function() {
             const query = new URLSearchParams(window.location.search).get('q');
             if (query) {
-                // Update the page title
-                document.getElementById('page-title').innerText = "Search Results - " + decodeURIComponent(query);
-                
-                // Dynamically trigger search with the query
-                const script = document.createElement('script');
-                script.src = `https://cse.google.com/cse.js?cx=11e846c3e49224d11&q=${encodeURIComponent(query)}`;
-                document.head.appendChild(script);
+                const apiKey = 'YOUR_GOOGLE_API_KEY';  // Replace with your API key
+                const searchEngineId = 'YOUR_CSE_ID';  // Replace with your CSE ID
+                const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${searchEngineId}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultsDiv = document.getElementById('results');
+                        const pageTitle = document.getElementById('page-title');
+                        pageTitle.innerText = `Search Results - ${decodeURIComponent(query)}`;
+
+                        data.items.forEach(item => {
+                            const resultDiv = document.createElement('div');
+                            resultDiv.classList.add('result');
+                            resultDiv.innerHTML = `
+                                <a href="${item.link}" target="_blank">${item.title}</a>
+                                <p>${item.snippet}</p>
+                            `;
+                            resultsDiv.appendChild(resultDiv);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching search results:', error);
+                    });
             }
         };
     </script>

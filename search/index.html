@@ -31,11 +31,20 @@
     <div id="google-search-box" class="gcse-searchresults"></div>
 
     <script>
+        // Pre-populate search box with the query parameter from the URL and update page title
         window.onload = function() {
             const query = new URLSearchParams(window.location.search).get('q');
             if (query) {
                 document.getElementById('searchQuery').value = query;
                 document.getElementById('page-title').innerText = "Search Results - " + decodeURIComponent(query);
+
+                // Dynamically trigger the Google Custom Search Engine with the query
+                // This is where the results will be shown inside the div below
+                const gcseSearchBox = document.getElementById('google-search-box');
+                gcseSearchBox.innerHTML = '';  // Clear previous results
+                const script = document.createElement('script');
+                script.src = `https://cse.google.com/cse.js?cx=11e846c3e49224d11&q=${encodeURIComponent(query)}`;
+                gcseSearchBox.appendChild(script);
             }
         };
     </script>

@@ -8,80 +8,40 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            padding: 20px;
         }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            width: 300px;
+        #google-search-box {
+            margin-bottom: 20px;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .results {
+        .gcse-searchresults {
             margin-top: 20px;
-            text-align: left;
         }
     </style>
+
+    <!-- Google Custom Search Script -->
+    <script async src="https://cse.google.com/cse.js?cx=11e846c3e49224d11"></script>
 </head>
 <body>
-    <h1>Search Results</h1>
-    
-    <form id="searchForm" action="/search" method="get">
-        <input type="text" id="searchQuery" name="q" placeholder="Search..." required>
+    <h1>Search</h1>
+
+    <!-- Search Form -->
+    <form action="/search" method="get" id="searchForm">
+        <input type="text" name="q" id="searchQuery" placeholder="Search..." required>
         <button type="submit">Search</button>
     </form>
-    
-    <div id="results" class="results"></div>
+
+    <!-- Embed the Google Custom Search Engine -->
+    <div id="google-search-box" class="gcse-searchresults"></div>
 
     <script>
-        // Data to simulate search results
-        const data = [
-            "Mertek Search Engine",
-            "GitHub Pages Search",
-            "Learn Web Development",
-            "Building a Custom Search Engine",
-            "How to use GitHub Pages"
-        ];
-
-        // Function to get the query string from URL
-        function getQueryParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        // Display results based on search query
-        function displayResults(query) {
-            const resultsDiv = document.getElementById('results');
-            const results = data.filter(item => item.toLowerCase().includes(query.toLowerCase()));
-
-            resultsDiv.innerHTML = ''; // Clear previous results
-
-            if (results.length > 0) {
-                results.forEach(result => {
-                    const div = document.createElement('div');
-                    div.textContent = result;
-                    resultsDiv.appendChild(div);
-                });
-            } else {
-                resultsDiv.textContent = 'No results found.';
+        // When the page is loaded with a query, trigger the Google search
+        window.onload = function() {
+            const query = new URLSearchParams(window.location.search).get('q');
+            if (query) {
+                // Set the value of the search query input to the query from the URL
+                document.getElementById('searchQuery').value = query;
             }
-        }
-
-        // If the page is loaded with a query, display results
-        const query = getQueryParameter('q');
-        if (query) {
-            displayResults(query);
-        }
-
-        // Handle the form submission
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent page reload
-            const query = document.getElementById('searchQuery').value;
-            window.location.search = `q=${query}`; // Redirect to /search?q=query
-        });
+        };
     </script>
 </body>
 </html>

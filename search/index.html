@@ -11,18 +11,15 @@
             padding: 20px;
         }
         #google-search-box {
-            margin-bottom: 20px;
-        }
-        .gcse-searchresults {
             margin-top: 20px;
         }
     </style>
 
-    <!-- Google Custom Search Script -->
+    <!-- Google Custom Search Engine Script -->
     <script async src="https://cse.google.com/cse.js?cx=11e846c3e49224d11"></script>
 </head>
 <body>
-    <h1>Search</h1>
+    <h1 id="page-title">Search Results</h1>
 
     <!-- Search Form -->
     <form action="/search" method="get" id="searchForm">
@@ -30,16 +27,15 @@
         <button type="submit">Search</button>
     </form>
 
-    <!-- Embed the Google Custom Search Engine -->
+    <!-- Google Custom Search Results -->
     <div id="google-search-box" class="gcse-searchresults"></div>
 
     <script>
-        // When the page is loaded with a query, trigger the Google search
         window.onload = function() {
             const query = new URLSearchParams(window.location.search).get('q');
             if (query) {
-                // Set the value of the search query input to the query from the URL
                 document.getElementById('searchQuery').value = query;
+                document.getElementById('page-title').innerText = "Search Results - " + decodeURIComponent(query);
             }
         };
     </script>

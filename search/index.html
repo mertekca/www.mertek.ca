@@ -31,7 +31,7 @@
             const query = new URLSearchParams(window.location.search).get('q');
             if (query) {
                 const apiKey = 'YOUR_GOOGLE_API_KEY';  // Replace with your API key
-                const searchEngineId = 'YOUR_CSE_ID';  // Replace with your CSE ID
+                const searchEngineId = 'YOUR_CSE_ID'; 11e846c3e49224d11
                 const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${searchEngineId}`;
 
                 fetch(url)
